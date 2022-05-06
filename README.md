@@ -2,6 +2,14 @@
 
 Lifts a fallible function that fails with error E1, into one that fails with error E2.
 
+```rust
+result
+    .map_err(Error::from)
+    .and_then(lift(failable))
+```
+
+## Backstory
+
 I had my own `Error` type, turning another result into mine was easy and nice
 
 ```rust
@@ -21,14 +29,6 @@ And I didn't like that:
 
 So I wrote this library.
 Yay, programming! 🎉
-
-## Examples
-
-```rust
-result
-    .map_err(Error::from)
-    .and_then(lift(failable))
-```
 
 ## Special thanks
 Thank you [cargo-readme](https://github.com/livioribeiro/cargo-readme) for generating this README for me.
