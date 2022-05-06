@@ -1,0 +1,11 @@
+[package]
+name = "lift_result"
+description = "Lifts a fallible function that returns Result<_, E1> into one that returns Result<_, E2>, if E1 can be automatically converted into E2."
+version = "1.0.0"
+edition = "2021"
+authors = [
+    "Cristián Arenas Ulloa <cristian.arenas@gmail.com> (https://github.com/NinoScript)",
+]
+repository = "https://github.com/NinoScript/lift-result/"
+license = "MIT OR Apache-2.0"
+keywords = ["lift", "result", "error"]
