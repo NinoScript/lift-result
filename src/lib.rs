@@ -50,7 +50,7 @@
 ///     .and_then(lift(failable))
 /// ```
 ///
-pub fn lift_result<F, I, O, E1, E2>(f: F) -> impl Fn(I) -> Result<O, E2>
+pub fn lift<F, I, O, E1, E2>(f: F) -> impl Fn(I) -> Result<O, E2>
 where
     F: Fn(I) -> Result<O, E1>,
     E2: From<E1>,
@@ -60,7 +60,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    use super::lift_result;
+    use super::lift;
     #[derive(Debug)]
     struct Error1;
     #[derive(Debug)]
@@ -79,7 +79,7 @@ mod tests {
     #[test]
     fn it_works() {
         let string_result = Result::<&str, Error2>::Ok("42");
-        let i32_result = string_result.and_then(lift_result(fallible));
+        let i32_result = string_result.and_then(lift(fallible));
         assert_eq!(i32_result.unwrap(), 42);
     }
 }
